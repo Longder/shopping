@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!--引入统一头-->
+<head th:include="import/head :: head"></head>
+<body class="gray-bg top-navigation">
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg" style="min-height:1000px;">
+        <div class="row border-bottom white-bg">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                            class="navbar-toggle collapsed" type="button">
+                        <i class="fa fa-reorder"></i>
+                    </button>
+                    <a href="#" class="navbar-brand">购物网站</a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <i class="fa fa-cart-arrow-down"></i> 购物车
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages" data-stopPropagation="true">
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a href="profile.html" class="pull-left">
+                                        <img alt="image" class="img-circle" src="static/img/a4.jpg">
+                                    </a>
+                                    <div class="media-body ">
+                                        <strong>商品名称</strong>
+                                        <br/>
+                                        <small class="text-muted">
+                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-warning btn-sm" type="button"><i
+                                                    class="fa fa-minus"></i>
+                                            </button>
+                                            <input readonly style="display:inline-block;width:70px;" type="number" class="form-control" value="1" />
+                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-primary btn-sm" type="button"><i
+                                                    class="fa fa-plus"></i>
+                                            </button>
+                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-danger btn-sm" type="button">
+                                                <i class="fa fa-remove"></i>删除
+                                            </button>
+                                        </small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a href="profile.html" class="pull-left">
+                                        <img alt="image" class="img-circle" src="static/img/a4.jpg">
+                                    </a>
+                                    <div class="media-body ">
+                                        <strong>商品名称</strong>
+                                        <br/>
+                                        <small class="text-muted">
+                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-warning btn-sm" type="button"><i
+                                                    class="fa fa-minus"></i>
+                                            </button>
+                                            <input readonly style="display:inline-block;width:70px;" type="number" class="form-control" value="1" />
+                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-primary btn-sm" type="button"><i
+                                                    class="fa fa-plus"></i>
+                                            </button>
+                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-danger btn-sm" type="button">
+                                                <i class="fa fa-remove"></i>删除
+                                            </button>
+                                        </small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a class="J_menuItem" href="order.html" data-index="88">
+                                        <i class="fa fa-cny"></i> <strong> 去结算</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown hidden-xs">
+                        <a class="right-sidebar-toggle" aria-expanded="false">
+                            <i class="fa fa-sign-in"></i> 请登录
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a target="_blank" href="index_v1.html" class="J_menuItem" data-index="0">
+                            <i class="fa fa-bank"></i> 网站后台
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contact-box">
+                            <a href="profile.html">
+                                <div class="col-sm-7">
+                                    <div class="text-center">
+                                        <img alt="image" style="width: 100%" src="static/img/a2.jpg">
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="col-sm-5">
+                                <a href="profile.html">
+                                    <h3><strong>商品名称</strong></h3>
+                                </a>
+                                <p>
+                                    <strong>分类分类</strong>
+                                </p>
+                                <p>商品描述商品描述商品描述商品描述商品描述</p>
+                                <a class="btn btn-success btn-warning">
+                                    <i class="fa fa-cart-plus"> </i> 加入购物车
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="contact-box">
+                            <a href="profile.html">
+                                <div class="col-sm-7">
+                                    <div class="text-center">
+                                        <img alt="image" style="width: 100%" src="static/img/a2.jpg">
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="col-sm-5">
+                                <a href="profile.html">
+                                    <h3><strong>商品名称</strong></h3>
+                                </a>
+                                <p>
+                                    <strong>分类分类</strong>
+                                </p>
+                                <p>商品描述商品描述商品描述商品描述商品描述</p>
+                                <a class="btn btn-success btn-warning">
+                                    <i class="fa fa-cart-plus"> </i> 加入购物车
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="contact-box">
+                            <a href="profile.html">
+                                <div class="col-sm-7">
+                                    <div class="text-center">
+                                        <img alt="image" style="width: 100%" src="static/img/a2.jpg">
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="col-sm-5">
+                                <a href="profile.html">
+                                    <h3><strong>商品名称</strong></h3>
+                                </a>
+                                <p>
+                                    <strong>分类分类</strong>
+                                </p>
+                                <p>商品描述商品描述商品描述商品描述商品描述</p>
+                                <a class="btn btn-success btn-warning">
+                                    <i class="fa fa-cart-plus"> </i> 加入购物车
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--引入统一JS-->
+<script th:replace="import/script :: script"></script>
+
+<script>
+    $(function(){
+        $('.dropdown-menu').click(function(e) {
+            e.stopPropagation();
+        });
+    });
+</script>
+</body>
+
+</html>
