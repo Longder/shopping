@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <!--引入统一头-->
 <head th:include="import/head :: head"></head>
 <body class="gray-bg top-navigation">
@@ -78,13 +77,21 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown hidden-xs">
-                        <a class="right-sidebar-toggle" aria-expanded="false">
+                    <li class="dropdown hidden-xs" th:if="${user==null}">
+                        <a target="_self" class="right-sidebar-toggle" aria-expanded="false" th:href="@{/toLogin}">
                             <i class="fa fa-sign-in"></i> 请登录
                         </a>
                     </li>
+                    <li class="dropdown hidden-xs" th:if="${user!=null}">
+                        <a target="_self" class="right-sidebar-toggle" aria-expanded="false" th:text="${user.name}+' 欢迎登录！'"></a>
+                    </li>
+                    <li class="dropdown hidden-xs" th:if="${user!=null}">
+                        <a target="_self" class="right-sidebar-toggle" aria-expanded="false" th:href="@{/logout}">
+                            <i class="fa fa-sign-in"></i> 登出
+                        </a>
+                    </li>
                     <li class="hidden-xs">
-                        <a target="_blank" href="index_v1.html" class="J_menuItem" data-index="0">
+                        <a target="_blank" class="right-sidebar-toggle" aria-expanded="false" th:href="@{/admin/index}">
                             <i class="fa fa-bank"></i> 网站后台
                         </a>
                     </li>

@@ -41,11 +41,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 //管理员
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                //登录之后才能看订单类的页面
                 .antMatchers("/order/**").authenticated()
                 .and()
                 .formLogin().loginPage("/toLogin").loginProcessingUrl("/login_check").permitAll()
                 .successHandler(formLoginSuccessHandler())
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/toLogin")
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
                 .and().csrf().disable().headers().cacheControl();
 
     }
@@ -73,8 +74,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public FormLoginSuccessHandler formLoginSuccessHandler() {
         FormLoginSuccessHandler handler = new FormLoginSuccessHandler();
-        handler.setDefaultTargetUrl("/admin/index");
-        handler.setAlwaysUseDefaultTargetUrl(true);
+        handler.setDefaultTargetUrl("/");
         return handler;
     }
 }

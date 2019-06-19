@@ -16,4 +16,11 @@ public interface SysUserRepository extends JpaRepository<SysUser, Long> {
 
     @Query("select distinct s from SysUser s left join s.roles r where r.role = :role ")
     List<SysUser> listByRole(@Param("role") SysRole role);
+
+    /**
+     * 查询普通用户（不包括管理员）
+     * @return
+     */
+    @Query("select distinct s from SysUser s left join s.roles r where r.role <> 'ROLE_ADMIN' ")
+    List<SysUser> listCommonUser();
 }

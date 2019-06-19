@@ -34,9 +34,21 @@ public class SysUser extends BaseIdEntity implements UserDetails {
     private String password;
 
     /**
-     * 用户角色
+     * 手机号
      */
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "sysUser",cascade = CascadeType.ALL)
+    @Column(name = "phone_")
+    private String phone;
+
+    /**
+     * 角色，单个，展示用
+     */
+    @Transient
+    private SysRole role;
+
+    /**
+     * 用户角色（多个）
+     */
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "sysUser", cascade = CascadeType.ALL)
     private List<SysUserRole> roles;
 
     @Override
@@ -44,34 +56,28 @@ public class SysUser extends BaseIdEntity implements UserDetails {
         return roles;
     }
 
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
     @Override
     public String getUsername() {
-        return null;
+        return this.loginName;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
