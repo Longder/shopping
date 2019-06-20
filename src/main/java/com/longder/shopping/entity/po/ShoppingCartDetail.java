@@ -35,5 +35,17 @@ public class ShoppingCartDetail extends BaseIdEntity{
      */
     @Column(name = "count_")
     private Integer count;
+    /**
+     * 单条总价
+     */
+    @Column(name = "price_")
+    private Double price;
+
+    /**
+     * 计算总价
+     */
+    public void calculatePrice(){
+        this.price = count * goods.getUnitPrice();
+    }
 
 }

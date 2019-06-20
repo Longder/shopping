@@ -54,6 +54,7 @@ public class ShoppingCartManageServiceImpl implements ShoppingCartManageService 
         } else {//有就修改数量
             detail.setCount(detail.getCount() + 1);
         }
+        detail.calculatePrice();
         shoppingCartDetailRepository.save(detail);
 
     }
@@ -68,6 +69,7 @@ public class ShoppingCartManageServiceImpl implements ShoppingCartManageService 
     public void addCount(Long detailId) {
         ShoppingCartDetail detail = shoppingCartDetailRepository.getOne(detailId);
         detail.setCount(detail.getCount() + 1);
+        detail.calculatePrice();
         shoppingCartDetailRepository.save(detail);
     }
 
@@ -82,6 +84,7 @@ public class ShoppingCartManageServiceImpl implements ShoppingCartManageService 
         ShoppingCartDetail detail = shoppingCartDetailRepository.getOne(detailId);
         if (detail.getCount() > 0) {
             detail.setCount(detail.getCount() - 1);
+            detail.calculatePrice();
             shoppingCartDetailRepository.save(detail);
         }
     }

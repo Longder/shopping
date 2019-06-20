@@ -1,20 +1,7 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>订单页面</title>
-
-    <link href="static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="static/css/animate.css" rel="stylesheet">
-    <link href="static/css/style.css?v=4.1.0" rel="stylesheet">
-
-</head>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<!--引入统一头-->
+<head th:include="import/head :: head"></head>
 <body class="gray-bg top-navigation">
 
 <div id="wrapper">
@@ -30,18 +17,17 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a aria-expanded="false" role="button" href="index.html"> 返回首页</a>
+                        <a aria-expanded="false" role="button" th:href="@{/}"> 返回首页</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown hidden-xs">
-                        <a class="right-sidebar-toggle" aria-expanded="false">
-                            <i class="fa fa-sign-in"></i> 请登录
-                        </a>
+                    <li class="dropdown hidden-xs" th:if="${user!=null}">
+                        <a aria-expanded="false" class="right-sidebar-toggle" target="_self"
+                           th:text="${user.name}+' 欢迎登录！'"></a>
                     </li>
-                    <li class="hidden-xs">
-                        <a href="index_v1.html" class="J_menuItem" data-index="0">
-                            <i class="fa fa-bank"></i> 网站后台
+                    <li class="dropdown hidden-xs">
+                        <a aria-expanded="false" class="right-sidebar-toggle" target="_self" th:href="@{/logout}">
+                            <i class="fa fa-sign-in"></i> 登出
                         </a>
                     </li>
                 </ul>
@@ -50,74 +36,26 @@
         <div class="row" style="margin-top: 100px;">
             <div class="col-sm-12">
                 <div class="ibox-content p-xl">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <address>
-                                <strong>北京百度在线网络技术有限公司</strong><br>
-                                北京市海淀区上地十街10号<br>
-                                <abbr title="Phone">总机：</abbr> (+86 10) 5992 8888
-                            </address>
-                        </div>
-
-                        <div class="col-sm-6 text-right">
-                            <h4>单据编号：</h4>
-                            <h4 class="text-navy">H+-000567F7-00</h4>
-                            <address>
-                                <strong>阿里巴巴集团</strong><br>
-                                中国杭州市华星路99号东部软件园创业大厦6层(310099)<br>
-                                <abbr title="Phone">总机：</abbr> (86) 571-8502-2088
-                            </address>
-                            <p>
-                                <span><strong>日期：</strong> 2014-11-11</span>
-                            </p>
-                        </div>
-                    </div>
-
                     <div class="table-responsive m-t">
                         <table class="table invoice-table">
                             <thead>
                             <tr>
-                                <th>清单</th>
+                                <th>商品名称</th>
                                 <th>数量</th>
                                 <th>单价</th>
-                                <th>税率</th>
                                 <th>总价</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr th:each="detail:${cartList}">
                                 <td>
-                                    <div><strong>尚都比拉2013冬装新款女装 韩版修身呢子大衣 秋冬气质羊毛呢外套</strong>
+                                    <div><strong th:text="${detail.goods.name}"></strong>
                                     </div>
                                 </td>
-                                <td>1</td>
-                                <td>¥26.00</td>
-                                <td>¥1.20</td>
-                                <td>¥31,98</td>
+                                <td th:text="${detail.count}"></td>
+                                <td>¥<span th:text="${detail.goods.unitPrice}"></span></td>
+                                <td>¥<span th:text="${detail.price}"></span></td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div><strong>11*11夏娜 新款斗篷毛呢外套 女秋冬呢子大衣 韩版大码宽松呢大衣</strong>
-                                    </div>
-                                    <small>双十一特价
-                                    </small>
-                                </td>
-                                <td>2</td>
-                                <td>¥80.00</td>
-                                <td>¥1.20</td>
-                                <td>¥196.80</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div><strong>2013秋装 新款女装韩版学生秋冬加厚加绒保暖开衫卫衣 百搭女外套</strong>
-                                    </div>
-                                </td>
-                                <td>3</td>
-                                <td>¥420.00</td>
-                                <td>¥1.20</td>
-                                <td>¥1033.20</td>
-                            </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -128,22 +66,14 @@
                         <tr>
                             <td><strong>总价：</strong>
                             </td>
-                            <td>¥1026.00</td>
-                        </tr>
-                        <tr>
-                            <td><strong>税：</strong>
-                            </td>
-                            <td>¥235.98</td>
-                        </tr>
-                        <tr>
-                            <td><strong>总计</strong>
-                            </td>
-                            <td>¥1261.98</td>
+                            <td>¥<span th:text="${total}"></span></td>
                         </tr>
                         </tbody>
                     </table>
                     <div class="text-right">
-                        <button class="btn btn-primary"><i class="fa fa-dollar"></i> 去付款</button>
+                        <form method="post" th:action="@{/order/submit}">
+                            <button onclick="return confirm('确定提交订单吗？');" class="btn btn-primary" type="submit"><i class="fa fa-dollar"></i> 结算订单</button>
+                        </form>
                     </div>
 
                     <div class="well m-t"><strong>注意：</strong> 请在30日内完成付款，否则订单会自动取消。
@@ -154,14 +84,8 @@
     </div>
 </div>
 
-<!-- 全局js -->
-<script src="static/js/jquery.min.js?v=2.1.4"></script>
-<script src="static/js/bootstrap.min.js?v=3.3.6"></script>
-
-
-
-
-
+<!--引入统一JS-->
+<script th:replace="import/script :: script"></script>
 
 </body>
 </html>

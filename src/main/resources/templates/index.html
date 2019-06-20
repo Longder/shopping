@@ -112,6 +112,7 @@
         </div>
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="container">
+                <h2>所有商品</h2>
                 <div class="row">
                     <div class="col-sm-4" th:each="goods:${goodsList}">
                         <div class="contact-box">
@@ -147,6 +148,7 @@
 
             </div>
         </div>
+
     </div>
 </div>
 
@@ -217,7 +219,7 @@
                     //结算
                     var li = '                            <li>' +
                         '                                <div class="text-center link-block">' +
-                        '                                    <a class="J_menuItem" data-index="88" href="order.html">' +
+                        '                                    <a class="J_menuItem" data-index="88" href="/order/init">' +
                         '                                        <i class="fa fa-cny"></i> <strong> 去结算</strong>' +
                         '                                    </a>' +
                         '                                </div>' +
@@ -225,6 +227,14 @@
                     $("#shopping-cart-ul").append(li);
                 } else {
                     console.log("没数据");
+                    var li = '                            <li>' +
+                        '                                <div class="text-center link-block">' +
+                        '                                    <a class="J_menuItem" data-index="88">' +
+                        '                                        <strong>您还未添加商品</strong>' +
+                        '                                    </a>' +
+                        '                                </div>' +
+                        '                            </li>';
+                    $("#shopping-cart-ul").append(li);
                 }
             }
         });
