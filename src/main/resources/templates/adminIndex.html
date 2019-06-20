@@ -3,6 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <!--引入统一头-->
 <head th:include="import/head :: head"></head>
+<title>购物网站后台</title>
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
 <div id="wrapper">
     <!--左侧导航开始-->
@@ -34,12 +35,18 @@
                         <span class="nav-label">用户管理</span>
                     </a>
                 </li>
-<!--                <li sec:authorize="hasRole('ROLE_USER')">-->
-<!--                    <a class="J_menuItem" th:href="@{/admin/car/list}" title="我的车辆">-->
-<!--                        <i class="fa fa-car"></i>-->
-<!--                        <span class="nav-label">我的车辆</span>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <li sec:authorize="hasRole('ROLE_SELLER')">
+                    <a class="J_menuItem" th:href="@{/admin/goods/list}" title="我的商品">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="nav-label">我的商品</span>
+                    </a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_SELLER')">
+                    <a class="J_menuItem" th:href="@{/admin/order/list}" title="我的订单">
+                        <i class="fa fa-credit-card"></i>
+                        <span class="nav-label">我的订单</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

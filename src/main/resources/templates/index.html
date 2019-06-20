@@ -4,39 +4,45 @@
 <head th:include="import/head :: head"></head>
 <body class="gray-bg top-navigation">
 <div id="wrapper">
-    <div id="page-wrapper" class="gray-bg" style="min-height:1000px;">
+    <div class="gray-bg" id="page-wrapper" style="min-height:1000px;">
         <div class="row border-bottom white-bg">
             <nav class="navbar navbar-static-top" role="navigation">
                 <div class="navbar-header">
-                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
-                            class="navbar-toggle collapsed" type="button">
+                    <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed"
+                            data-target="#navbar"
+                            data-toggle="collapse" type="button">
                         <i class="fa fa-reorder"></i>
                     </button>
-                    <a href="#" class="navbar-brand">购物网站</a>
+                    <a class="navbar-brand" href="#">购物网站</a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <li class="dropdown" th:if="${user!=null}">
+                        <a aria-expanded="false" class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                             <i class="fa fa-cart-arrow-down"></i> 购物车
                         </a>
-                        <ul class="dropdown-menu dropdown-messages" data-stopPropagation="true">
+                        <ul class="dropdown-menu dropdown-messages" data-stopPropagation="true" id="shopping-cart-ul">
                             <li>
                                 <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
+                                    <a class="pull-left" href="#">
                                         <img alt="image" class="img-circle" src="static/img/a4.jpg">
                                     </a>
                                     <div class="media-body ">
                                         <strong>商品名称</strong>
                                         <br/>
                                         <small class="text-muted">
-                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-warning btn-sm" type="button"><i
+                                            <button class="btn btn-warning btn-sm" data-stopPropagation="true"
+                                                    style="display:inline-block" type="button"><i
                                                     class="fa fa-minus"></i>
                                             </button>
-                                            <input readonly style="display:inline-block;width:70px;" type="number" class="form-control" value="1" />
-                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-primary btn-sm" type="button"><i
+                                            <input class="form-control" readonly
+                                                   style="display:inline-block;width:70px;"
+                                                   type="number" value="1"/>
+                                            <button class="btn btn-primary btn-sm" data-stopPropagation="true"
+                                                    style="display:inline-block" type="button"><i
                                                     class="fa fa-plus"></i>
                                             </button>
-                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-danger btn-sm" type="button">
+                                            <button class="btn btn-danger btn-sm" data-stopPropagation="true"
+                                                    style="display:inline-block" type="button">
                                                 <i class="fa fa-remove"></i>删除
                                             </button>
                                         </small>
@@ -46,21 +52,26 @@
                             <li class="divider"></li>
                             <li>
                                 <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
+                                    <a class="pull-left" href="profile.html">
                                         <img alt="image" class="img-circle" src="static/img/a4.jpg">
                                     </a>
                                     <div class="media-body ">
                                         <strong>商品名称</strong>
                                         <br/>
                                         <small class="text-muted">
-                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-warning btn-sm" type="button"><i
+                                            <button class="btn btn-warning btn-sm" data-stopPropagation="true"
+                                                    style="display:inline-block" type="button"><i
                                                     class="fa fa-minus"></i>
                                             </button>
-                                            <input readonly style="display:inline-block;width:70px;" type="number" class="form-control" value="1" />
-                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-primary btn-sm" type="button"><i
+                                            <input class="form-control" readonly
+                                                   style="display:inline-block;width:70px;"
+                                                   type="number" value="1"/>
+                                            <button class="btn btn-primary btn-sm" data-stopPropagation="true"
+                                                    style="display:inline-block" type="button"><i
                                                     class="fa fa-plus"></i>
                                             </button>
-                                            <button data-stopPropagation="true" style="display:inline-block" class="btn btn-danger btn-sm" type="button">
+                                            <button class="btn btn-danger btn-sm" data-stopPropagation="true"
+                                                    style="display:inline-block" type="button">
                                                 <i class="fa fa-remove"></i>删除
                                             </button>
                                         </small>
@@ -70,7 +81,7 @@
                             <li class="divider"></li>
                             <li>
                                 <div class="text-center link-block">
-                                    <a class="J_menuItem" href="order.html" data-index="88">
+                                    <a class="J_menuItem" data-index="88" href="order.html">
                                         <i class="fa fa-cny"></i> <strong> 去结算</strong>
                                     </a>
                                 </div>
@@ -78,20 +89,21 @@
                         </ul>
                     </li>
                     <li class="dropdown hidden-xs" th:if="${user==null}">
-                        <a target="_self" class="right-sidebar-toggle" aria-expanded="false" th:href="@{/toLogin}">
+                        <a aria-expanded="false" class="right-sidebar-toggle" target="_self" th:href="@{/toLogin}">
                             <i class="fa fa-sign-in"></i> 请登录
                         </a>
                     </li>
                     <li class="dropdown hidden-xs" th:if="${user!=null}">
-                        <a target="_self" class="right-sidebar-toggle" aria-expanded="false" th:text="${user.name}+' 欢迎登录！'"></a>
+                        <a aria-expanded="false" class="right-sidebar-toggle" target="_self"
+                           th:text="${user.name}+' 欢迎登录！'"></a>
                     </li>
                     <li class="dropdown hidden-xs" th:if="${user!=null}">
-                        <a target="_self" class="right-sidebar-toggle" aria-expanded="false" th:href="@{/logout}">
+                        <a aria-expanded="false" class="right-sidebar-toggle" target="_self" th:href="@{/logout}">
                             <i class="fa fa-sign-in"></i> 登出
                         </a>
                     </li>
                     <li class="hidden-xs">
-                        <a target="_blank" class="right-sidebar-toggle" aria-expanded="false" th:href="@{/admin/index}">
+                        <a aria-expanded="false" class="right-sidebar-toggle" target="_blank" th:href="@{/admin/index}">
                             <i class="fa fa-bank"></i> 网站后台
                         </a>
                     </li>
@@ -101,72 +113,30 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" th:each="goods:${goodsList}">
                         <div class="contact-box">
                             <a href="profile.html">
                                 <div class="col-sm-7">
                                     <div class="text-center">
-                                        <img alt="image" style="width: 100%" src="static/img/a2.jpg">
+                                        <img alt="image" style="width: 160px;height:160px;" th:src="${goods.image}">
                                     </div>
                                 </div>
                             </a>
                             <div class="col-sm-5">
-                                <a href="profile.html">
-                                    <h3><strong>商品名称</strong></h3>
+                                <a href="#">
+                                    <h3><strong th:text="${goods.name}"></strong></h3>
                                 </a>
                                 <p>
-                                    <strong>分类分类</strong>
+                                    <strong><span class="label" th:classappend="${goods.type.label}"
+                                                  th:text="${goods.type.displayName}"></span>
+                                    </strong>
                                 </p>
-                                <p>商品描述商品描述商品描述商品描述商品描述</p>
-                                <a class="btn btn-success btn-warning">
-                                    <i class="fa fa-cart-plus"> </i> 加入购物车
-                                </a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="contact-box">
-                            <a href="profile.html">
-                                <div class="col-sm-7">
-                                    <div class="text-center">
-                                        <img alt="image" style="width: 100%" src="static/img/a2.jpg">
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="col-sm-5">
-                                <a href="profile.html">
-                                    <h3><strong>商品名称</strong></h3>
-                                </a>
-                                <p>
-                                    <strong>分类分类</strong>
-                                </p>
-                                <p>商品描述商品描述商品描述商品描述商品描述</p>
-                                <a class="btn btn-success btn-warning">
-                                    <i class="fa fa-cart-plus"> </i> 加入购物车
-                                </a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="contact-box">
-                            <a href="profile.html">
-                                <div class="col-sm-7">
-                                    <div class="text-center">
-                                        <img alt="image" style="width: 100%" src="static/img/a2.jpg">
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="col-sm-5">
-                                <a href="profile.html">
-                                    <h3><strong>商品名称</strong></h3>
-                                </a>
-                                <p>
-                                    <strong>分类分类</strong>
-                                </p>
-                                <p>商品描述商品描述商品描述商品描述商品描述</p>
-                                <a class="btn btn-success btn-warning">
+                                <p>单价：<span class="text-danger" th:text="${goods.unitPrice}"></span></p>
+                                <p>库存：<span class="text-primary" th:text="${goods.count}"></span></p>
+                                <p th:text="${goods.describe}"></p>
+
+                                <a class="btn btn-success btn-warning add-cart-button" th:attr="data-goodsid=${goods.id}"
+                                   th:if="${user!=null}">
                                     <i class="fa fa-cart-plus"> </i> 加入购物车
                                 </a>
                             </div>
@@ -184,11 +154,151 @@
 <script th:replace="import/script :: script"></script>
 
 <script>
-    $(function(){
-        $('.dropdown-menu').click(function(e) {
+    $(function () {
+        $('.dropdown-menu').click(function (e) {
             e.stopPropagation();
         });
+
+        //加入购物车按钮点击事件
+        $(".add-cart-button").click(function () {
+            console.log("添加购物车！");
+
+            addToShoppingCart($(this).data("goodsid"));
+        });
+
+
+        loadShoppingCart();
+
     });
+
+    //加载购物车内容
+    function loadShoppingCart() {
+        $.ajax({
+            type: "post",
+            url: "/shoppingCart/list",
+            async: true,
+            success: function (data) {
+
+                $("#shopping-cart-ul").empty();
+                if (data && data.length > 0) {
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        var li = '<li>\n' +
+                            '                                <div class="dropdown-messages-box">' +
+                            '                                    <a class="pull-left" href="#">' +
+                            '                                        <img alt="image" class="img-circle" src="' + data[i].goods.image + '">' +
+                            '                                    </a>' +
+                            '                                    <div class="media-body ">' +
+                            '                                        <strong>' + data[i].goods.name + '</strong>' +
+                            '                                        <br/>' +
+                            '                                        <small class="text-muted">' +
+                            '                                            <button class="btn btn-warning btn-sm" data-stopPropagation="true"' +
+                            '                                                    style="display:inline-block" type="button" onclick="reduceCount('+data[i].id+')"><i' +
+                            '                                                    class="fa fa-minus"></i>' +
+                            '                                            </button>' +
+                            '                                            <input class="form-control" readonly style="display:inline-block;width:70px;"' +
+                            '                                                   type="number" value="' + data[i].count + '"/>' +
+                            '                                            <button class="btn btn-primary btn-sm" data-stopPropagation="true"' +
+                            '                                                    style="display:inline-block" type="button" onclick="addCount(' + data[i].id + ')"><i' +
+                            '                                                    class="fa fa-plus"></i>' +
+                            '                                            </button>\n' +
+                            '                                            <button class="btn btn-danger btn-sm" data-stopPropagation="true"' +
+                            '                                                    style="display:inline-block" type="button" onclick="removeFromCart('+data[i].id+')">' +
+                            '                                                <i class="fa fa-remove"></i>删除' +
+                            '                                            </button>' +
+                            '                                        </small>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                            </li>';
+                        $("#shopping-cart-ul").append(li);
+                        $("#shopping-cart-ul").append('<li class="divider"></li>');
+                    }
+
+                    //结算
+                    var li = '                            <li>' +
+                        '                                <div class="text-center link-block">' +
+                        '                                    <a class="J_menuItem" data-index="88" href="order.html">' +
+                        '                                        <i class="fa fa-cny"></i> <strong> 去结算</strong>' +
+                        '                                    </a>' +
+                        '                                </div>' +
+                        '                            </li>';
+                    $("#shopping-cart-ul").append(li);
+                } else {
+                    console.log("没数据");
+                }
+            }
+        });
+    }
+
+    //添加到购物车的方法
+    function addToShoppingCart(goodsId) {
+        $.ajax({
+            type: "post",
+            url: "/shoppingCart/add",
+            data: {goodsId: goodsId},
+            async: true,
+            success: function (data) {
+                if (data === 'ok') {
+                    loadShoppingCart();
+                }
+
+            }
+        });
+    }
+
+    /**
+     * 增加数量
+     */
+    function addCount(detailId) {
+        $.ajax({
+            type: "post",
+            url: "/shoppingCart/addCount",
+            data: {detailId: detailId},
+            async: true,
+            success: function (data) {
+                if (data === 'ok') {
+                    loadShoppingCart();
+                }
+
+            }
+        });
+    }
+
+    /**
+     * 减少数量
+     */
+    function reduceCount(detailId){
+        $.ajax({
+            type: "post",
+            url: "/shoppingCart/reduceCount",
+            data: {detailId: detailId},
+            async: true,
+            success: function (data) {
+                if (data === 'ok') {
+                    loadShoppingCart();
+                }
+
+            }
+        });
+    }
+
+    /**
+     * 移除某个商品
+     */
+    function removeFromCart(detailId){
+        $.ajax({
+            type: "post",
+            url: "/shoppingCart/remove",
+            data: {detailId: detailId},
+            async: true,
+            success: function (data) {
+                if (data === 'ok') {
+                    loadShoppingCart();
+                }
+
+            }
+        });
+    }
 </script>
 </body>
 

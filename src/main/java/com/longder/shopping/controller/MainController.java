@@ -2,6 +2,7 @@ package com.longder.shopping.controller;
 
 import com.longder.shopping.entity.po.SysRole;
 import com.longder.shopping.entity.po.SysUser;
+import com.longder.shopping.service.GoodsManageService;
 import com.longder.shopping.service.UserManageService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -25,6 +26,8 @@ public class MainController {
 
     @Resource
     private UserManageService userManageService;
+    @Resource
+    private GoodsManageService goodsManageService;
 
     /**
      * 主页
@@ -41,7 +44,8 @@ public class MainController {
         } else {
             model.addAttribute("user", securityContext.getAuthentication().getPrincipal());
         }
-
+        //查询所有商品
+        model.addAttribute("goodsList",goodsManageService.listAllGoods());
         return "index";
     }
 

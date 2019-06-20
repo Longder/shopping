@@ -9,6 +9,9 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 用户实体类
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity

@@ -31,4 +31,17 @@ public interface UserManageService {
      */
     List<SysUser> listUsers();
 
+    /**
+     * 查询获取一个用户
+     * @param userId
+     * @return
+     */
+    SysUser getOneUser(Long userId);
+
+    /**
+     * 删除一个用户
+     * @param userId
+     */
+    void deleteOneUser(Long userId);
+
 }

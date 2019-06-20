@@ -1,14 +1,14 @@
-package com.longder.shopping.entity.po;
-
-import org.springframework.security.core.GrantedAuthority;
+package com.longder.shopping.entity.enumeration;
 
 /**
- * 系统角色枚举
+ * 商品类型枚举
  */
-public enum SysRole implements GrantedAuthority {
-    ROLE_ADMIN("ROLE_ADMIN", "系统管理员", ""),
-    ROLE_SELLER("ROLE_SELLER", "卖家", "label-success"),
-    ROLE_BUYER("ROLE_BUYER", "买家", "label-info");
+public enum GoodsType {
+    ELECTRONICS("ELECTRONICS","电子产品","label-success"),
+    BOOKS("BOOKS","图书","label-default"),
+    WOMEN_WEAR("WOMEN_WEAR","女装","label-primary"),
+    MEN_WEAR("MEN_WEAR","男装","label-info"),
+    FURNITURE("FURNITURE","家居","label-warning");
 
     /**
      * 名称
@@ -19,12 +19,11 @@ public enum SysRole implements GrantedAuthority {
      */
     private String displayName;
     /**
-     * 展示用的标签class
+     * 标签样式
      */
     private String label;
 
-
-    SysRole(String name, String displayName, String label) {
+    GoodsType(String name, String displayName, String label) {
         this.name = name;
         this.displayName = displayName;
         this.label = label;
@@ -52,10 +51,5 @@ public enum SysRole implements GrantedAuthority {
 
     public void setLabel(String label) {
         this.label = label;
-    }
-
-    @Override
-    public String getAuthority() {
-        return this.name;
     }
 }

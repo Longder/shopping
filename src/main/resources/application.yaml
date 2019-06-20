@@ -8,11 +8,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-# 日志配置（开发用）
-logging:
-  level:
-    com:
-      longder: DEBUG
 # 服务端口
 server:
   port: 5188
+# 默认密码
+system:
+  default-password: 1234

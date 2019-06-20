@@ -1,9 +1,11 @@
 package com.longder.shopping.controller;
 
+import com.longder.shopping.entity.po.SysUser;
 import com.longder.shopping.service.UserManageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -39,11 +41,33 @@ public class UserManageController {
     }
 
     /**
+     * 添加用户
+     * @return
+     */
+    @PostMapping("/add")
+    public String add(SysUser sysUser){
+        userManageService.saveOneUser(sysUser,sysUser.getRole());
+        return "redirect:list";
+    }
+
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     */
+    @GetMapping("/delete")
+    public String delete(Long userId){
+        userManageService.deleteOneUser(userId);
+        return "redirect:list";
+    }
+
+    /**
      * 去修改用户
      * @return
      */
     @GetMapping("/toUpdate")
-    public String toUpdate(){
+    public String toUpdate(Long userId,Model model){
+        model.addAttribute("user",userManageService.getOneUser(userId));
         return "user/update-user-modal";
     }
 

@@ -52,9 +52,9 @@
                                 <td th:text="${user.name}"></td>
                                 <td th:text="${user.loginName}"></td>
                                 <td th:text="${user.phone}"></td>
-                                <td th:text="${user.role.displayName}"></td>
+                                <td><span class="label" th:classappend="${user.role.label}" th:text="${user.role.displayName}"></span></td>
                                 <td>
-                                    <a th:href="@{/admin/user/deleteUser(userId=${user.id})}" class="btn btn-sm btn-danger"
+                                    <a th:href="@{/admin/user/delete(userId=${user.id})}" class="btn btn-sm btn-danger"
                                        onclick="return confirm('确定删除吗？')">
                                         删除
                                     </a>
