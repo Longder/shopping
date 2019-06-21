@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -41,6 +42,16 @@ public class SysUser extends BaseIdEntity implements UserDetails {
      */
     @Column(name = "phone_")
     private String phone;
+    /**
+     * 创建时间
+     */
+    @Column(name = "create_date")
+    private LocalDate createDate;
+    /**
+     * 是否是会员
+     */
+    @Column(name = "member_")
+    private Boolean member;
 
     /**
      * 角色，单个，展示用

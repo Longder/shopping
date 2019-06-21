@@ -42,7 +42,11 @@ public class MainController {
         if (ObjectUtils.isEmpty(securityContext)) {
             model.addAttribute("user", null);
         } else {
-            model.addAttribute("user", securityContext.getAuthentication().getPrincipal());
+            //从数据库里更新一下
+            SysUser sysUser = (SysUser) securityContext.getAuthentication().getPrincipal();
+            SysUser currentUser = userManageService.getOneUser(sysUser.getId());
+            currentUser.setRole(currentUser.getRoles().get(0).getRole());
+            model.addAttribute("user", currentUser);
         }
         //查询所有商品
         model.addAttribute("goodsList",goodsManageService.listAllGoods());
@@ -114,4 +118,13 @@ public class MainController {
         return "dashboard";
     }
 
+    /**
+     * 检查用户的会员申请资格
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/checkUser")
+    public Boolean checkUser(Long userId){
+        return userManageService.applyMember(userId);
+    }
 }

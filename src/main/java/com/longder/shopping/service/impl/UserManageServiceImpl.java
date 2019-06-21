@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 
@@ -44,6 +46,8 @@ public class UserManageServiceImpl implements UserManageService {
             } else {
                 sysUser.setPassword(EncryptionUtil.encrypt(sysUser.getPassword().trim()));
             }
+            sysUser.setMember(false);
+            sysUser.setCreateDate(LocalDate.now());
             sysUserRepository.save(sysUser);
             SysUserRole userRole = new SysUserRole(sysUser, role);
             sysUserRoleRepository.save(userRole);
@@ -101,5 +105,37 @@ public class UserManageServiceImpl implements UserManageService {
     @Transactional
     public void deleteOneUser(Long userId) {
         sysUserRepository.deleteById(userId);
+    }
+
+    /**
+     * 检查某用户是否可以申请会员
+     * 注册时间大于2年才可以
+     * @param sysUser
+     * @return true:可以  false:不可以
+     */
+    @Override
+    public boolean canApplyMember(SysUser sysUser) {
+        LocalDate createDate = sysUser.getCreateDate();
+        LocalDate now = LocalDate.now();
+        return Period.between(createDate, now).getYears() >= 2;
+    }
+
+    /**
+     * 申请会员
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    @Transactional
+    public boolean applyMember(Long userId) {
+        SysUser sysUser = sysUserRepository.getOne(userId);
+        if(!canApplyMember(sysUser)){
+            return false;
+        }else{
+            sysUser.setMember(true);
+            sysUserRepository.save(sysUser);
+            return true;
+        }
     }
 }

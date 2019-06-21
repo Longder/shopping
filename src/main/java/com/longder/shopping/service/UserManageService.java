@@ -44,4 +44,18 @@ public interface UserManageService {
      */
     void deleteOneUser(Long userId);
 
+
+    /**
+     * 检查某用户是否可以申请会员
+     * @param sysUser
+     * @return true:可以  false:不可以
+     */
+    boolean canApplyMember(SysUser sysUser);
+
+    /**
+     * 申请会员
+     * @param userId
+     * @return
+     */
+    boolean applyMember(Long userId);
 }

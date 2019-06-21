@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_SELLER')">
-                    <a class="J_menuItem" th:href="@{/admin/order/list}" title="我的订单">
+                    <a class="J_menuItem" th:href="@{/order/list}" title="我的订单">
                         <i class="fa fa-credit-card"></i>
                         <span class="nav-label">我的订单</span>
                     </a>
@@ -85,11 +85,11 @@
                     <li class="J_tabCloseOther"><a>关闭其他</a>
                     </li>
                 </ul>
-                <a id="changePasswordButton" type="button" class="roll-nav roll-right J_tabExit" data-toggle="modal"
-                   data-target="#editPasswordModal"
-                   onclick="openModal('/admin/user/toChangePassword','editPasswordModal')">
-                    修改密码
-                </a>
+<!--                <a id="changePasswordButton" type="button" class="roll-nav roll-right J_tabExit" data-toggle="modal"-->
+<!--                   data-target="#editPasswordModal"-->
+<!--                   onclick="openModal('/admin/user/toChangePassword','editPasswordModal')">-->
+<!--                    修改密码-->
+<!--                </a>-->
             </div>
             <a href="/logout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
         </div>
