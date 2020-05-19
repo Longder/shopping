@@ -53,7 +53,7 @@ public class GoodsManageController {
     public String add(Goods goods){
         SysUser currentUser = SecurityUtil.getCurrentUser();
         goodsManageService.saveOneGoods(goods,currentUser);
-        return "redirect:list";
+        return "redirect:/admin/goods/list";
     }
 
     /**
@@ -100,6 +100,6 @@ public class GoodsManageController {
     @PostMapping("/updateCount")
     public String updateCount(Goods goods){
         goodsManageService.updateGoodsCount(goods);
-        return "redirect:list";
+        return "redirect:/admin/goods/list";
     }
 }

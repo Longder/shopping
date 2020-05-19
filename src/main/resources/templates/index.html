@@ -88,11 +88,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown hidden-xs" th:if="${user!=null&&user.role.name=='ROLE_BUYER'&&user.member==false}">
-                        <a th:onclick="'javascript:applyMember(\''+${user.id}+'\')'" aria-expanded="false" class="right-sidebar-toggle" target="_self" style="cursor:pointer">
-                            <i class="fa fa-user-plus"></i> 申请会员
-                        </a>
-                    </li>
                     <li class="dropdown hidden-xs" th:if="${user==null}">
                         <a aria-expanded="false" class="right-sidebar-toggle" target="_self" th:href="@{/toLogin}">
                             <i class="fa fa-sign-in"></i> 请登录
@@ -185,7 +180,6 @@
             url: "/shoppingCart/list",
             async: true,
             success: function (data) {
-
                 $("#shopping-cart-ul").empty();
                 if (data && data.length > 0) {
                     console.log(data);

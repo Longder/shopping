@@ -24,8 +24,8 @@
         <div>
             <h1 class="logo-name">商+</h1>
         </div>
-        <h3>欢迎注册网上商城</h3>
-        <p>创建一个新账户</p>
+        <h3>欢迎注册水果商城</h3>
+        <p>创建一个买家账户</p>
         <form class="m-t" role="form" id="register-form" th:action="@{/register}" method="post">
             <div class="form-group">
                 <input name="name" type="text" class="form-control" placeholder="请输入姓名"/>
@@ -82,22 +82,22 @@
     $(function () {
         //注册表单验证
         $("#register-form").validate({
-            rules:{
-                name:"required",
-                loginName:{
-                    "required":true,
-                    "checkLoginName":true
+            rules: {
+                name: "required",
+                loginName: {
+                    "required": true,
+                    "checkLoginName": true
                 },
-                phone:"required",
-                password:"required"
-            },messages:{
-                name:"请输入姓名",
-                loginName:{
-                    "required":"请输入登录名",
-                    "checkLoginName":"登录名已存在"
+                phone: "required",
+                password: "required"
+            }, messages: {
+                name: "请输入姓名",
+                loginName: {
+                    "required": "请输入登录名",
+                    "checkLoginName": "登录名已存在"
                 },
-                phone:"情输入联系电话",
-                password:"请输入密码"
+                phone: "情输入联系电话",
+                password: "请输入密码"
             }
         });
 

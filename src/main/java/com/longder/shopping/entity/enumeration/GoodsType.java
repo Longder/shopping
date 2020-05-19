@@ -4,11 +4,9 @@ package com.longder.shopping.entity.enumeration;
  * 商品类型枚举
  */
 public enum GoodsType {
-    ELECTRONICS("ELECTRONICS","电子产品","label-success"),
-    BOOKS("BOOKS","图书","label-default"),
-    WOMEN_WEAR("WOMEN_WEAR","女装","label-primary"),
-    MEN_WEAR("MEN_WEAR","男装","label-info"),
-    FURNITURE("FURNITURE","家居","label-warning");
+    ELECTRONICS("TROPICAL_FRUIT","热带水果","label-success"),
+    BOOKS("SUBTROPICS_FRUIT","亚热带水果","label-default"),
+    WOMEN_WEAR("WINTER_FRUIT","冬季水果","label-primary");
 
     /**
      * 名称

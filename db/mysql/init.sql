@@ -52,8 +52,7 @@ create table if not exists sys_user
     phone_ varchar(255) null,
     create_date date null,
     member_ bit null
-    )
-;
+);
 
 drop table if exists  sys_user_role;
 create table if not exists sys_user_role
