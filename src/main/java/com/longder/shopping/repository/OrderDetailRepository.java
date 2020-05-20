@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface OrderDetailRepository extends JpaRepository<OrderDetail, LongLongSeqHelper> {
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {
 
     @Query("select d from OrderDetail d where d.seller = :seller")
     List<OrderDetail> listBySeller(@Param("seller") SysUser seller);

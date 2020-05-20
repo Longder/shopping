@@ -22,4 +22,10 @@ public interface OrderManageService {
      * @return
      */
     List<OrderDetail> listOrder(SysUser seller);
+
+    /**
+     * 发货某个订单
+     * @param orderId
+     */
+    void deliver(Long orderId);
 }

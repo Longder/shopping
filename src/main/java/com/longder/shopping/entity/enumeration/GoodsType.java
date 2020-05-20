@@ -4,9 +4,9 @@ package com.longder.shopping.entity.enumeration;
  * 商品类型枚举
  */
 public enum GoodsType {
-    ELECTRONICS("TROPICAL_FRUIT","热带水果","label-success"),
-    BOOKS("SUBTROPICS_FRUIT","亚热带水果","label-default"),
-    WOMEN_WEAR("WINTER_FRUIT","冬季水果","label-primary");
+    TROPICAL_FRUIT("TROPICAL_FRUIT","热带水果","label-success"),
+    SUBTROPICS_FRUIT("SUBTROPICS_FRUIT","亚热带水果","label-default"),
+    WINTER_FRUIT("WINTER_FRUIT","冬季水果","label-primary");
 
     /**
      * 名称

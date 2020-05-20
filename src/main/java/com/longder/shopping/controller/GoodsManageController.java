@@ -53,7 +53,7 @@ public class GoodsManageController {
     public String add(Goods goods){
         SysUser currentUser = SecurityUtil.getCurrentUser();
         goodsManageService.saveOneGoods(goods,currentUser);
-        return "redirect:/admin/goods/list";
+        return "redirect:list";
     }
 
     /**

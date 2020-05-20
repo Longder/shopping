@@ -28,9 +28,6 @@ public class Goods extends BaseIdEntity {
     @Enumerated(EnumType.STRING)
     private GoodsType type;
 
-    @Transient
-    private GoodsType test;
-
     /**
      * 商品单价
      */

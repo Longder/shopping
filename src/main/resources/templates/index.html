@@ -102,7 +102,7 @@
                             <i class="fa fa-sign-in"></i> 登出
                         </a>
                     </li>
-                    <li class="hidden-xs">
+                    <li class="hidden-xs" th:if="${user!=null&&user.role.name!='ROLE_BUYER'}">
                         <a aria-expanded="false" class="right-sidebar-toggle" target="_blank" th:href="@{/admin/index}">
                             <i class="fa fa-bank"></i> 网站后台
                         </a>

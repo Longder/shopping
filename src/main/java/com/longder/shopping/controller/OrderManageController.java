@@ -6,6 +6,7 @@ import com.longder.shopping.security.SecurityUtil;
 
 import com.longder.shopping.service.OrderManageService;
 import com.longder.shopping.service.ShoppingCartManageService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 @Controller
 @RequestMapping("/order")
+@Slf4j
 public class OrderManageController {
     @Resource
     private ShoppingCartManageService shoppingCartManageService;
@@ -66,5 +68,16 @@ public class OrderManageController {
         SysUser sysUser = SecurityUtil.getCurrentUser();
         model.addAttribute("orderList",orderManageService.listOrder(sysUser));
         return "order/list";
+    }
+
+    /**
+     * 发货
+     * @param orderId
+     * @return
+     */
+    @GetMapping("/deliver")
+    public String deliver(Long orderId){
+        orderManageService.deliver(orderId);
+        return "redirect:/order/list";
     }
 }

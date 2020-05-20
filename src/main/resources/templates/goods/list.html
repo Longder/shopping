@@ -50,8 +50,10 @@
                         <tr th:each="goods:${goodsList}">
                             <td th:text="${goodsStat.index+1}"></td>
                             <td th:text="${goods.name}"></td>
-                            <td><span class="label" th:classappend="${goods.type.label}"
-                                      th:text="${goods.type.displayName}"></span></td>
+                            <td>
+                                <span class="label" th:classappend="${goods.type.label}"
+                                      th:text="${goods.type.displayName}"></span>
+                            </td>
                             <td th:text="${goods.unitPrice}"></td>
                             <td th:text="${goods.count}"></td>
                             <td>

@@ -35,7 +35,9 @@
                             <th>商品名称</th>
                             <th>买家</th>
                             <th>数量</th>
+                            <th>是否发货</th>
                             <th>总价</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,7 +46,17 @@
                             <td th:text="${order.goods.name}"></td>
                             <td th:text="${order.buyer.name}"></td>
                             <td th:text="${order.count}"></td>
+                            <td>
+                                <span th:if="${!order.deliver}" class="label label-danger">未发货</span>
+                                <span th:if="${order.deliver}" class="label label-success">已发货</span>
+                            </td>
                             <td>￥<span th:text="${order.total}"></span></td>
+                            <td>
+                                <a th:if="${!order.deliver}" class="btn btn-sm btn-warning"
+                                   th:href="@{'/order/deliver?orderId='+${order.id}}" onclick="return confirm('确定发货吗？')">
+                                    发货
+                                </a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

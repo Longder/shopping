@@ -47,5 +47,10 @@ public class OrderDetail extends BaseIdEntity {
     @Column(name = "total_")
     private Double total;
 
+    /**
+     * 是否发货 true 已发货 false 未发货
+     */
+    @Column(name = "deliver_")
+    private Boolean deliver;
 
 }

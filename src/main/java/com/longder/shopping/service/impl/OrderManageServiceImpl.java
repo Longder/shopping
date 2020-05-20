@@ -48,6 +48,8 @@ public class OrderManageServiceImpl implements OrderManageService {
             orderDetail.setSeller(detail.getGoods().getSeller());
             orderDetail.setCount(detail.getCount());
             orderDetail.setTotal(detail.getPrice());
+            //默认未发货
+            orderDetail.setDeliver(false);
             orderDetailList.add(orderDetail);
             //商品数量减少
             goods.setCount(goods.getCount() - detail.getCount());
@@ -67,5 +69,18 @@ public class OrderManageServiceImpl implements OrderManageService {
     @Override
     public List<OrderDetail> listOrder(SysUser seller) {
         return orderDetailRepository.listBySeller(seller);
+    }
+
+    /**
+     * 发货某个订单
+     *
+     * @param orderId
+     */
+    @Override
+    @Transactional
+    public void deliver(Long orderId) {
+        OrderDetail orderDetail = orderDetailRepository.getOne(orderId);
+        orderDetail.setDeliver(true);
+        orderDetailRepository.save(orderDetail);
     }
 }

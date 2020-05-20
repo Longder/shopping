@@ -25,7 +25,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">水果分类<span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
-                                            <select class="form-control m-b" name="test" required>
+                                            <select class="form-control m-b" name="type" required>
                                                 <option th:each="type:${goodsTypes}" th:value="${type.name}" th:text="${type.displayName}"></option>
                                             </select>
                                         </div>
